@@ -6,7 +6,7 @@ A editor app to build custom business card with images and texts.
 
 ![Example GIF](editorio.gif)
 
-#### [Deployed to Vercel](https://nextjs-tailwindcss-ts.vercel.app/)
+#### [Deployed to Vercel Demo](https://editor-io-demo-7sflr8plz-irfan-createxyz.vercel.app/)
 
 ## App features
 
