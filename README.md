@@ -1,10 +1,24 @@
-# Next.js 13 + Tailwind CSS v3 + Typescript Template
+# Editor IO app
 
-A ready-to-use starter template for building fast and modern web applications with Next.js 13 and Tailwind CSS, along with Headless UI and Heroicons libraries. This template is designed to get you up and running quickly, with optimizations for performance and a streamlined developer experience.
+A editor app to build custom business card with images and texts.
+
+# Demo
+
+![Example GIF](editorio.gif)
 
 #### [Deployed to Vercel](https://nextjs-tailwindcss-ts.vercel.app/)
 
-## Features
+## App features
+
+- Image editing
+- Text editing
+- Image carousel
+
+## Issues
+
+- React DND works with React-slick when there is no slider or limited (3) images. When there are more images, react slick carousel prevents react dnd drag layer.
+
+## Tech Stack
 
 - [Next.js 13](https://nextjs.org/) with basic directory structure and custom configurations
 - [Tailwind CSS](https://tailwindcss.com/) for efficient production builds
@@ -19,20 +33,18 @@ To get started with this template, follow these steps:
 
 1. Clone the repository:
 
-```bash
+````bash
 # Https
-git clone https://github.com/Tittoh/nextjs-tailwind-ts.git
+git clone https://github.com/khanzzirfan/EditorIo-Demo.git
 
-# GitHub CLI
-gh repo clone Tittoh/nextjs-tailwind-ts
-```
+
 
 2. Navigate to the project directory:
 
 ```bash
 
-cd nextjs-tailwind-ts
-```
+cd editorio-demo
+````
 
 3. Install dependencies with Yarn:
 
@@ -46,12 +58,4 @@ yarn install
 yarn dev
 ```
 
-The template should now be running on http://localhost:3000.
-
-## Contributions
-
-This template is open source and contributions are welcome! Feel free to open issues, fix bugs, and make suggestions for improvements.
-
-## License
-
-This template is released under the MIT license. See [LICENSE](LICENSE) for more details.
+The app should now be running on http://localhost:3000.
