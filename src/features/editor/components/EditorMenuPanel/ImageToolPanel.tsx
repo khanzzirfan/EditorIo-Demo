@@ -1,26 +1,25 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { PlusCircleIcon, TrashIcon } from '@heroicons/react/outline';
 import React from 'react';
 // @ts-ignore
-import Slider from 'react-slick';
 import { useRecoilState } from 'recoil';
-
-// css: themes
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import { Navigation, Pagination } from 'swiper/modules';
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/free-mode';
+import 'swiper/css/navigation';
+import 'swiper/css/thumbs';
 
 import { DraggableImage } from './DraggableImage';
 import { DropzoneFiles } from './Dropzonefiles';
-import { IconButton } from '../Buttons/IconButton';
 import SideMenuPanel from '../ui/SideMenuPanel';
 import { useDndImageUpdater } from '../../hooks/useDndImageUpdater';
-import { imagesState, ImageState } from '../../state/atoms/ui';
+import { imagesState } from '../../state/atoms/ui';
 
 // TODO: clear images at some point (when leaving editor?)
 function ImageToolPanel() {
   const [images, setImages] = useRecoilState(imagesState);
-
-  const totalImages = images.length;
   const { handleOnAddImage, handleOnRemoveImage } = useDndImageUpdater();
 
   const onMediaUpload = async (acceptedFiles: any) => {
@@ -49,83 +48,35 @@ function ImageToolPanel() {
     }
   };
 
-  const toShow = totalImages > 3 ? 3 : totalImages;
-  const slickSettings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: toShow,
-    slidesToScroll: toShow,
-    arrows: false,
-    draggable: false,
-    focusOnSelect: false,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
-          dots: true,
-          arrows: false,
-          draggable: false,
-          focusOnSelect: false,
-          swipe: false,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
-          arrows: false,
-          draggable: false,
-          focusOnSelect: false,
-          swipe: false,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-          arrows: false,
-          draggable: false,
-          focusOnSelect: false,
-          swipe: false,
-        },
-      },
-    ],
-  };
-
   return (
     <SideMenuPanel title='Image'>
       <DropzoneFiles onMediaUpload={onMediaUpload} />
       <div className='px-1 mt-4'>
-        <Slider {...slickSettings}>
-          {images.map((file: ImageState) => (
-            <div key={file.id}>
-              <DraggableImage src={file.src} id={file.id} />
-              <div className='flex flex-row flex-1 justify-center gap-2 py-2'>
-                <IconButton
-                  color='gray'
-                  onClick={handleOnAddImage}
-                  id={file.id}
-                >
-                  <PlusCircleIcon className='h-4 w-4' />
-                </IconButton>
-                <IconButton
-                  color='red'
-                  onClick={handleOnRemoveImage}
-                  id={file.id}
-                >
-                  <TrashIcon className='h-4 w-4' />
-                </IconButton>
-              </div>
-            </div>
+        <Swiper
+          style={{
+            '--swiper-navigation-color': 'rgb(46 16 101)',
+            '--swiper-pagination-color': 'rgb(46 16 101)',
+          }}
+          spaceBetween={10}
+          navigation={true}
+          pagination={{
+            clickable: true,
+          }}
+          modules={[Pagination, Navigation]}
+          allowTouchMove={false}
+          className='mySwiper2'
+        >
+          {images.map((image) => (
+            <SwiperSlide key={image.id}>
+              <DraggableImage
+                id={image.id}
+                src={image.src}
+                onAdd={handleOnAddImage}
+                onRemove={handleOnRemoveImage}
+              />
+            </SwiperSlide>
           ))}
-        </Slider>
+        </Swiper>
       </div>
     </SideMenuPanel>
   );
