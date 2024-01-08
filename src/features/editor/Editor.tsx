@@ -10,7 +10,6 @@ import HistoryControls from './components/HistoryControls/HistoryControls';
 import ProgressModal from './components/ProgressModal/ProgressModal';
 import ZoomControls from './components/ZoomControls/ZoomControls';
 import { PRELOAD_FONTS } from './constants';
-import { AudioControlsContainer } from './containers/AudioControlsContainer';
 import { EditorAreaContainer } from './containers/EditorAreaContainer';
 import EditorFocusController from './controllers/EditorFocusController';
 import HistoryController from './controllers/HistoryController';
@@ -47,39 +46,37 @@ function Editor() {
   const handleKeyDown = useEditorKeyCommand('delete', deleteSelectedElement);
 
   return (
-    <AudioControlsContainer.Provider>
-      <EditorAreaContainer.Provider>
-        <UnsavedChangesController />
-        <EditorFocusController />
-        <HistoryController />
-        <ProgressModal />
-        <DndProvider backend={HTML5Backend}>
-          <div className='flex flex-grow overflow-hidden'>
-            <EditorMenu />
-            <div className='flex flex-grow flex-col overflow-hidden '>
-              <div className='flex flex-grow overflow-hidden'>
-                <FadingComponent>
-                  <div className='flex flex-grow flex-col h-full justify-stretch'>
-                    <EditorMenuPanel />
-                    <div className='py-1.5 px-2 space-x-2 flex w-full border-r bg-white justify-center border-t'>
-                      <HistoryControls />
-                      <ZoomControls />
-                    </div>
+    <EditorAreaContainer.Provider>
+      <UnsavedChangesController />
+      <EditorFocusController />
+      <HistoryController />
+      <ProgressModal />
+      <DndProvider backend={HTML5Backend}>
+        <div className='flex flex-grow overflow-hidden'>
+          <EditorMenu />
+          <div className='flex flex-grow flex-col overflow-hidden '>
+            <div className='flex flex-grow overflow-hidden'>
+              <FadingComponent>
+                <div className='flex flex-grow flex-col h-full justify-stretch'>
+                  <EditorMenuPanel />
+                  <div className='py-1.5 px-2 space-x-2 flex w-full border-r bg-white justify-center border-t'>
+                    <HistoryControls />
+                    <ZoomControls />
                   </div>
-                </FadingComponent>
-                <MainArea
-                  onKeyDown={handleKeyDown}
-                  className='relative overflow-hidden '
-                  noScroll
-                >
-                  <KonvaCanvasRenderer />
-                </MainArea>
-              </div>
+                </div>
+              </FadingComponent>
+              <MainArea
+                onKeyDown={handleKeyDown}
+                className='relative overflow-hidden '
+                noScroll
+              >
+                <KonvaCanvasRenderer />
+              </MainArea>
             </div>
           </div>
-        </DndProvider>
-      </EditorAreaContainer.Provider>
-    </AudioControlsContainer.Provider>
+        </div>
+      </DndProvider>
+    </EditorAreaContainer.Provider>
   );
 }
 
