@@ -4,15 +4,17 @@ A editor app to build custom business card with images and texts.
 
 # Demo
 
-![Example GIF](editorio.gif)
+![Example GIF](editoriov1.gif)
 
 #### [Deployed to Vercel Demo](https://editor-io-demo.vercel.app/)
 
 ## App features
 
 - Image editing
-- Text editing
+- Text editing, inline editing in canvas using double click. Use esc or enter keys to exit editing mode.
 - Image carousel
+- Drag and Drop images to canvas
+- Replaceable image on canvas.
 
 ## Issues
 
@@ -25,7 +27,6 @@ A editor app to build custom business card with images and texts.
 - [Heroicons](https://heroicons.com/) library for easy access to high-quality icons
 - [Headless UI](https://headlessui.com/) for building beautiful and functional user interfaces
 - [Yarn](https://yarnpkg.com/) as the package manager for easy package management
-- [MIT license](https://opensource.org/licenses/MIT) for open-source use and collaboration
 
 ## Getting Started
 
