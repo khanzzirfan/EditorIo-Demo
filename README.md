@@ -16,10 +16,6 @@ A editor app to build custom business card with images and texts.
 - Drag and Drop images to canvas
 - Replaceable image on canvas.
 
-## Issues
-
-- React DND works with React-slick when there is no slider or limited (3) images. When there are more images, react slick carousel prevents react dnd drag layer.
-
 ## Tech Stack
 
 - [Next.js 13](https://nextjs.org/) with basic directory structure and custom configurations
