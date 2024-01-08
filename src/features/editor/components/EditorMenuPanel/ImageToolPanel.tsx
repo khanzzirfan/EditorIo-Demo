@@ -54,6 +54,7 @@ function ImageToolPanel() {
       <div className='px-1 mt-4'>
         <Swiper
           style={{
+            // @ts-ignore
             '--swiper-navigation-color': 'rgb(46 16 101)',
             '--swiper-pagination-color': 'rgb(46 16 101)',
           }}
